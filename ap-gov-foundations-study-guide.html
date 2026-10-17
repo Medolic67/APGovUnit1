@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundations of American Democracy</title>
+<style>
+:root{
+  --bg:#f6f4ef;--card:#ffffff;--ink:#1c2230;--mute:#667085;--line:#e6e1d6;--chip:#efeae0;
+  --navy:#1f3a5f;--red:#b3261e;--gold:#c8962e;--teal:#0e7490;--green:#2e7d5b;--purple:#6b4fa0;--orange:#c2570c;--brown:#7a5c2e;--wine:#8c1d40;--blue:#1f5f8b;
+  --shadow:0 1px 2px rgba(20,30,50,.06),0 6px 20px rgba(20,30,50,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#10141c;--card:#192030;--ink:#e9ebf1;--mute:#9aa3b5;--line:#2a3347;--chip:#232c40;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25)}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.2}
+.hero{background:linear-gradient(135deg,#14284a 0%,#1f3a5f 55%,#8c1d40 130%);color:#fff;padding:44px 20px 70px;position:relative;overflow:hidden}
+.hero::after{content:"★ ★ ★ ★ ★";position:absolute;right:24px;top:18px;letter-spacing:10px;opacity:.15;font-size:22px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.hero h1{font-size:clamp(28px,5vw,46px)}
+.hero p{margin:10px 0 0;opacity:.85;max-width:640px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:4px 12px;font-size:12.5px}
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin-top:-30px}
+.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+.tab{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 16px;border-radius:99px;cursor:pointer;font:600 14px system-ui,sans-serif;box-shadow:var(--shadow);transition:.15s}
+.tab:hover{transform:translateY(-1px)}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{display:none;padding:28px 0 70px;animation:fade .25s}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sec{margin:34px 0 12px;display:flex;align-items:center;gap:10px}
+.sec h2{font-size:23px}
+.sec::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--line),transparent)}
+.sub{color:var(--mute);margin:-4px 0 14px;font-size:14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.w2{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.card h3{font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card .ic{font-size:20px}
+.card.top{border-top:5px solid var(--navy)}
+.c-red{--c:var(--red)}.c-gold{--c:var(--gold)}.c-teal{--c:var(--teal)}.c-green{--c:var(--green)}.c-purple{--c:var(--purple)}.c-orange{--c:var(--orange)}.c-brown{--c:var(--brown)}.c-wine{--c:var(--wine)}.c-blue{--c:var(--blue)}.c-navy{--c:var(--navy)}
+.card.col{border-top:5px solid var(--c)}
+ul.t{margin:0;padding-left:18px}ul.t li{margin:3px 0}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:3px 11px;font-size:12.5px;margin:3px 4px 3px 0;border:1px solid var(--line)}
+.chip.c{background:var(--c);color:#fff;border-color:transparent}
+.tag{display:inline-block;font:700 11px system-ui;text-transform:uppercase;letter-spacing:.06em;color:var(--c,var(--navy))}
+.big{font-size:19px;font-family:Georgia,serif;line-height:1.4}
+.quote{border-left:4px solid var(--gold);padding:8px 14px;background:var(--chip);border-radius:0 10px 10px 0;font-family:Georgia,serif;font-style:italic;margin:10px 0}
+.note{background:#fff6d6;color:#4a3d00;border:1px solid #ecd98a;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:12px}
+@media (prefers-color-scheme:dark){.note{background:#3a3414;color:#f2e6b0;border-color:#5b5120}}
+/* timeline */
+.tl{display:flex;overflow-x:auto;gap:0;padding:6px 2px 14px}
+.tl .ev{flex:0 0 150px;position:relative;padding-top:26px;padding-right:10px}
+.tl .ev::before{content:"";position:absolute;top:8px;left:0;right:0;height:3px;background:var(--line)}
+.tl .ev::after{content:"";position:absolute;top:2px;left:0;width:15px;height:15px;border-radius:50%;background:var(--c,var(--navy));border:3px solid var(--bg)}
+.tl b{display:block;font-family:Georgia,serif;font-size:16px;color:var(--c,var(--navy))}
+.tl span{font-size:13px;color:var(--mute);line-height:1.35;display:block}
+/* versus */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+.vs .mid{align-self:center;font:800 14px system-ui;color:var(--mute);background:var(--chip);border-radius:50%;width:38px;height:38px;display:grid;place-items:center}
+@media(max-width:640px){.vs{grid-template-columns:1fr}.vs .mid{justify-self:center}}
+/* sub-tabs */
+.stabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.st{border:2px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:12px;cursor:pointer;font:600 14px system-ui}
+.st.on{border-color:var(--c,var(--navy));background:var(--c,var(--navy));color:#fff}
+.sp{display:none}.sp.on{display:block;animation:fade .25s}
+/* articles row */
+.arts{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.arts div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center;font-size:12.5px;box-shadow:var(--shadow)}
+.arts b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;margin:0 auto 6px;font-size:14px}
+@media(max-width:700px){.arts{grid-template-columns:repeat(4,1fr)}}
+/* amendment eras */
+.era{border-radius:12px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c)}
+.era b{color:var(--c)}
+.era small{color:var(--mute)}
+/* flow */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.flow .st2{flex:1 1 170px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:var(--shadow);position:relative}
+.flow .st2 .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--wine);color:#fff;font:700 12px system-ui;margin-bottom:6px}
+.flow .ar{align-self:center;color:var(--mute);font-size:20px}
+/* doc picker */
+.dpick{display:flex;gap:8px;flex-wrap:wrap}
+.dp{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 13px;cursor:pointer;font:600 13.5px system-ui;display:flex;gap:7px;align-items:center}
+.dp i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
+.dp.on{background:var(--c);color:#fff;border-color:var(--c)}.dp.on i{background:#fff}
+.doc{margin-top:14px;border-radius:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.doc .hd{background:var(--c);color:#fff;padding:20px 22px}
+.doc .hd h3{font-size:26px}
+.doc .hd small{opacity:.85}
+.doc .bd{padding:18px 22px;display:grid;gap:18px;grid-template-columns:1.3fr 1fr}
+@media(max-width:760px){.doc .bd{grid-template-columns:1fr}}
+.one{font:19px/1.4 Georgia,serif;grid-column:1/-1;border-left:5px solid var(--c);padding-left:14px}
+.idea{display:flex;gap:10px;margin:8px 0}
+.idea .nn{flex:none;width:24px;height:24px;border-radius:7px;background:var(--c);color:#fff;display:grid;place-items:center;font:700 12px system-ui}
+.fixrow{display:grid;grid-template-columns:1fr 26px 1fr;gap:6px;align-items:center;font-size:13.5px;margin:5px 0}
+.fixrow div{background:var(--chip);border-radius:8px;padding:6px 10px}
+.fixrow .ok{background:#e1f3e8;color:#14532d}
+@media(prefers-color-scheme:dark){.fixrow .ok{background:#17382a;color:#b6e8cc}}
+/* matrix */
+.mx{width:100%;border-collapse:separate;border-spacing:3px;font-size:13px}
+.mx th{font-weight:700;padding:6px 4px;text-align:center;color:#fff;border-radius:8px;font-size:12px}
+.mx th.r{background:var(--chip);color:var(--ink);text-align:left;padding:6px 10px}
+.mx td{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:8px;height:34px}
+.mx td.y{background:var(--c);color:#fff;font-weight:700}
+.tw{overflow-x:auto}
+/* chains */
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+.chain span.n{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-size:13px}
+.chain span.a{color:var(--mute)}
+.chain span.n.k{background:var(--c);color:#fff;border-color:transparent}
+/* tables */
+table.t2{width:100%;border-collapse:collapse;font-size:14px}
+table.t2 th,table.t2 td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.t2 th{background:var(--chip)}
+/* vocab */
+.vtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.vtools input{flex:1 1 220px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:15px system-ui}
+.fc{perspective:900px;height:150px;cursor:pointer}
+.fc>div{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.fc.f>div{transform:rotateY(180deg)}
+.fc .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow);border:1px solid var(--line);overflow:auto}
+.fc .front{background:var(--card);border-top:5px solid var(--c);text-align:center;align-items:center}
+.fc .front b{font:700 18px Georgia,serif}
+.fc .front small{color:var(--mute);margin-top:6px}
+.fc .back{background:var(--c);color:#fff;transform:rotateY(180deg);font-size:14px}
+.vcount{color:var(--mute);font-size:13px;margin-left:auto}
+/* quiz */
+.qz{max-width:680px;margin:0 auto}
+.bar{height:8px;background:var(--chip);border-radius:9px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--green));width:0;transition:.3s}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:15px system-ui;cursor:pointer}
+.opt:hover{border-color:var(--navy)}
+.opt.good{border-color:var(--green);background:#e1f3e8;color:#14532d}
+.opt.bad{border-color:var(--red);background:#fde8e6;color:#7a1410}
+@media(prefers-color-scheme:dark){.opt.good{background:#17382a;color:#b6e8cc}.opt.bad{background:#3d1b19;color:#f5bcb8}}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:12px;padding:10px 20px;font:700 14px system-ui;cursor:pointer;margin-top:10px}
+details.dd{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+details.dd summary{padding:11px 16px;cursor:pointer;font-weight:600}
+details.dd .in{padding:0 16px 14px}
+footer{text-align:center;color:var(--mute);font-size:12.5px;padding:24px}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <h1>Foundations of American Democracy</h1>
+  <p>Your three slide decks plus the Declaration &amp; Locke, Articles &amp; Federal Farmer, Brutus 1, Federalist 10 &amp; 51, and <i>Clinton v. City of New York</i>, all in one place.</p>
+  <div class="pills"><span class="pill">3 decks</span><span class="pill">7 documents</span><span class="pill">1 case</span><span class="pill">80+ vocab cards</span><span class="pill">Quiz</span></div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="tabs">
+  <button class="tab on" data-t="overview">🧭 Overview</button>
+  <button class="tab" data-t="slides">🖼️ Slides</button>
+  <button class="tab" data-t="docs">📜 Documents</button>
+  <button class="tab" data-t="case">⚖️ Case</button>
+  <button class="tab" data-t="grants">💰 Grants</button>
+  <button class="tab" data-t="connect">🔗 Connections</button>
+  <button class="tab" data-t="frq">✍️ Argument FRQ</button>
+  <button class="tab" data-t="vocab">🔤 Vocab</button>
+  <button class="tab" data-t="quiz">✅ Quiz</button>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= OVERVIEW ================= -->
+<section class="panel on" id="p-overview">
+  <div class="card top" style="margin-top:6px">
+    <span class="tag">The one big question</span>
+    <p class="big" style="margin:6px 0 0">How do you give government enough power to keep order, without letting it become a threat to liberty?</p>
+    <p class="sub" style="margin:8px 0 0">Every document, case and slide in this guide is an answer to that question, or an argument against someone else's answer.</p>
+  </div>
+
+  <div class="sec"><h2>Timeline</h2></div>
+  <div class="tl">
+    <div class="ev" style="--c:var(--brown)"><b>1215</b><span>Magna Carta: no tax without “common counsel”</span></div>
+    <div class="ev" style="--c:var(--brown)"><b>1689</b><span>Locke’s Second Treatise</span></div>
+    <div class="ev" style="--c:var(--red)"><b>1776</b><span>Declaration of Independence</span></div>
+    <div class="ev" style="--c:var(--purple)"><b>1781</b><span>Articles of Confederation take effect</span></div>
+    <div class="ev" style="--c:var(--purple)"><b>1786–87</b><span>Shays’ Rebellion; Constitutional Convention</span></div>
+    <div class="ev" style="--c:var(--orange)"><b>Oct 1787</b><span>Federal Farmer &amp; Brutus 1 (Anti-Federalists)</span></div>
+    <div class="ev" style="--c:var(--blue)"><b>Nov 1787</b><span>Federalist 10 (Madison)</span></div>
+    <div class="ev" style="--c:var(--teal)"><b>Feb 1788</b><span>Federalist 51 (Madison)</span></div>
+    <div class="ev" style="--c:var(--green)"><b>1788–91</b><span>Constitution ratified; Bill of Rights</span></div>
+    <div class="ev" style="--c:var(--wine)"><b>1819 · 1995 · 1998</b><span>McCulloch · Lopez · Clinton v. NYC</span></div>
+  </div>
+
+  <div class="sec"><h2>Pick your path</h2></div>
+  <div class="grid">
+    <div class="card col c-navy"><h3><span class="ic">🖼️</span>Slides</h3><p class="sub" style="margin:0">All three decks, slide by slide, as quick visual cards.</p></div>
+    <div class="card col c-red"><h3><span class="ic">📜</span>Documents</h3><p class="sub" style="margin:0">One page per document: one-liner, key ideas, links.</p></div>
+    <div class="card col c-wine"><h3><span class="ic">⚖️</span>Case</h3><p class="sub" style="margin:0">Clinton v. City of New York, step by step.</p></div>
+    <div class="card col c-teal"><h3><span class="ic">🔗</span>Connections</h3><p class="sub" style="margin:0">Heat-map, threads, and Federalist vs. Anti-Federalist.</p></div>
+    <div class="card col c-gold"><h3><span class="ic">🔤</span>Vocab</h3><p class="sub" style="margin:0">Flip cards you can filter and search.</p></div>
+    <div class="card col c-green"><h3><span class="ic">✅</span>Quiz</h3><p class="sub" style="margin:0">10 multiple-choice questions with explanations.</p></div>
+  </div>
+
+  <details class="dd" style="margin-top:22px"><summary>⚠️ Spots in the slides worth double-checking</summary><div class="in"><ul class="t">
+    <li><b>“Vertical” separation of powers:</b> Deck 2 labels the branches’ split “vertical.” Most textbooks call it <i>horizontal</i>, and call federalism the <i>vertical</i> split.</li>
+    <li><b>Cole memo image:</b> the rescinded memo pictured is the Feb 14, 2014 financial-crimes guidance, not the main 2013 memo.</li>
+    <li><b>Block grants “ineffective”:</b> that is the deck’s claim; research is mixed by program.</li>
+    <li><b>Marijuana map:</b> a snapshot; state laws keep changing.</li>
+    <li><b>Federal Farmer:</b> a pseudonym; authorship is uncertain.</li>
+    <li>Document summaries come from general knowledge of the texts, so check them against your assigned readings.</li>
+  </ul></div></details>
+</section>
+
+<!-- ================= SLIDES ================= -->
+<section class="panel" id="p-slides">
+  <div class="stabs" id="slideTabs">
+    <button class="st on c-red" data-s="d1" style="--c:var(--red)">Deck 1 · Democracy</button>
+    <button class="st" data-s="d2" style="--c:var(--blue)">Deck 2 · Constitution</button>
+    <button class="st" data-s="d3" style="--c:var(--green)">Deck 3 · Federalism</button>
+  </div>
+
+  <!-- DECK 1 -->
+  <div class="sp on" id="sp-d1">
+    <div class="sec"><h2>5 ideals of democracy</h2></div>
+    <div class="grid">
+      <div class="card col c-red"><h3>Limited government</h3>Power restricted by laws or a constitution.</div>
+      <div class="card col c-gold"><h3>Natural rights</h3>Life, liberty, property; no government may take them.</div>
+      <div class="card col c-blue"><h3>Popular sovereignty</h3>Power comes from the consent of the people.</div>
+      <div class="card col c-green"><h3>Republicanism</h3>Governing through elected representatives.</div>
+      <div class="card col c-purple"><h3>Social contract</h3>We consent to be governed if our rights are protected.</div>
+    </div>
+    <p class="sub" style="margin-top:10px"><b>Purpose of government (Statue of Liberty slide):</b> balance liberty and order, and limit government to protect individual rights.</p>
+
+    <div class="sec"><h2>Power vs. authority</h2></div>
+    <div class="grid">
+      <div class="card"><span class="tag">Power</span><p class="big" style="margin:4px 0 0">The ability to get things done, rightful or not.</p></div>
+      <div class="card"><span class="tag">Authority</span><p class="big" style="margin:4px 0 0">The <i>right</i> to use power. It makes power rightful.</p></div>
+      <div class="card"><span class="tag">Legitimate power</span><p class="big" style="margin:4px 0 0">Conferred by law or constitution, democratic, and widely accepted.</p></div>
+    </div>
+
+    <div class="sec"><h2>How does a state form?</h2></div>
+    <div class="vs">
+      <div class="card col c-brown"><h3>👑 Divine Right</h3>God created the state and gives those of royal birth the right to rule.</div>
+      <div class="mid">VS</div>
+      <div class="card col c-green"><h3>🤝 Social Contract</h3>The state arose from a voluntary act of free people. <i>(Highlighted in your deck.)</i></div>
+    </div>
+
+    <div class="sec"><h2>Who holds power in a representative democracy?</h2></div>
+    <div class="grid">
+      <div class="card col c-wine"><h3>🎩 Elitist</h3>A small minority of economic elites and policy networks holds the most power.<p class="sub" style="margin:8px 0 0">Slide: 4 presidents who lost the popular vote but won the Electoral College (1876, 1888, 2000, 2016).</p></div>
+      <div class="card col c-blue"><h3>⚖️ Pluralist</h3>Competition among many groups and interests shapes policy.<p class="sub" style="margin:8px 0 0">Slide: “When we grow up we should be lobbyists.”</p></div>
+      <div class="card col c-green"><h3>🗳️ Participatory</h3>Citizens decide policy directly; politicians carry it out.<p class="sub" style="margin:8px 0 0">Slide: town hall and council meeting clips.</p></div>
+    </div>
+
+    <div class="sec"><h2>The road to 1776</h2></div>
+    <div class="tl">
+      <div class="ev" style="--c:var(--brown)"><b>1215 Magna Carta</b><span>Taxes only by “common counsel”</span></div>
+      <div class="ev" style="--c:var(--orange)"><b>1765 Stamp Act</b><span>Opponents cite Magna Carta: no tax without consent</span></div>
+      <div class="ev" style="--c:var(--gold)"><b>1766 Repeal</b><span>Resistance works, but new taxes follow</span></div>
+      <div class="ev" style="--c:var(--red)"><b>1776 Declaration</b><span>Framers declare freedom from Britain</span></div>
+    </div>
+
+    <div class="sec"><h2>Tough questions on the slides</h2></div>
+    <div class="grid">
+      <div class="card"><h3>“All men are created equal”</h3><ul class="t"><li>How did 1776 understand it vs. today?</li><li>Many signers were slaveowners. Are the principles wrong or less important?</li></ul></div>
+      <div class="card"><h3>“Remember the ladies”</h3><ul class="t"><li>Married women lost legal identity (property, money, contracts), even into the 1970s.</li><li>What is the effect on gender equality today?</li></ul></div>
+      <div class="card"><h3>Your Canvas task</h3><ul class="t"><li>Read the Gettysburg Address and answer the questions.</li><li>Connect it to Declaration principles and current events.</li></ul></div>
+    </div>
+
+    <div class="sec"><h2>Document roadmap from the deck</h2></div>
+    <div class="card"><table class="t2">
+      <tr><th>Document</th><th>Paired with</th><th>Theme</th></tr>
+      <tr><td>Declaration of Independence</td><td>Locke’s Second Treatise</td><td>Purpose of government, natural rights</td></tr>
+      <tr><td>Articles of Confederation</td><td>Anti-Federalist letter</td><td>Weaknesses of the Articles</td></tr>
+      <tr><td>Federalist 10</td><td>Brutus 1</td><td>Factions; size and role of government</td></tr>
+      <tr><td>Federalist 51</td><td>Supreme Court case</td><td>Separation of powers, checks and balances</td></tr>
+      <tr><td>10th Amendment</td><td>Essays on the 10th</td><td>Federalism, states’ rights</td></tr></table></div>
+  </div>
+
+  <!-- DECK 2 -->
+  <div class="sp" id="sp-d2">
+    <div class="sec"><h2>The Constitution does 3 things</h2></div>
+    <div class="grid">
+      <div class="card col c-blue"><h3>🏗️ Sets up</h3>the government</div>
+      <div class="card col c-teal"><h3>📐 Defines</h3>the government</div>
+      <div class="card col c-green"><h3>🛡️ Protects</h3>basic rights</div>
+    </div>
+
+    <div class="sec"><h2>Seven articles</h2></div>
+    <div class="arts">
+      <div style="--c:var(--red)"><b>1</b>Legislative</div>
+      <div style="--c:var(--blue)"><b>2</b>Executive</div>
+      <div style="--c:var(--green)"><b>3</b>Judicial</div>
+      <div style="--c:var(--orange)"><b>4</b>States’ relations</div>
+      <div style="--c:var(--purple)"><b>5</b>Amendments</div>
+      <div style="--c:var(--teal)"><b>6</b>Supreme law</div>
+      <div style="--c:var(--wine)"><b>7</b>Ratification</div>
+    </div>
+    <div class="grid w2" style="margin-top:14px">
+      <div class="card col c-red"><h3>Article I · Congress</h3><ul class="t"><li>House/Senate qualifications, Enumeration Clause</li><li>Elections, committees, bill process</li><li>Enumerated powers: Commerce, Necessary &amp; Proper (Elastic)</li><li>Limits on Congress (habeas corpus, budget) and on states</li></ul></div>
+      <div class="card col c-blue"><h3>Article II · President</h3><ul class="t"><li>Qualifications, Electoral College</li><li>Powers as checks: Commander-in-Chief, advice and consent</li><li>Executive orders (Take Care Clause)</li><li>High Crimes and Misdemeanors</li></ul></div>
+      <div class="card col c-green"><h3>Article III · Courts</h3><ul class="t"><li>Judges’ qualifications</li><li>Judicial review</li><li>Court structure; original vs. appellate jurisdiction</li><li>Treason</li></ul></div>
+      <div class="card col c-orange"><h3>Article IV · States</h3><ul class="t"><li>Full Faith and Credit Clause</li><li>Guarantee Clause</li></ul></div>
+      <div class="card col c-purple"><h3>Article V · Amendments</h3><ul class="t"><li><b>Propose:</b> 2/3 of Congress, or convention requested by 2/3 (34) of states</li><li><b>Ratify:</b> 3/4 (38) of state legislatures or conventions</li></ul></div>
+      <div class="card col c-teal"><h3>Articles VI &amp; VII</h3><ul class="t"><li><b>VI:</b> Supremacy Clause</li><li><b>VII:</b> Ratification (9 states)</li></ul></div>
+    </div>
+
+    <div class="sec"><h2>In vs. not in the Constitution</h2></div>
+    <div class="vs">
+      <div class="card col c-green"><h3>✅ In it</h3><span class="chip">Congress</span><span class="chip">President</span><span class="chip">Courts</span></div>
+      <div class="mid">VS</div>
+      <div class="card col c-red"><h3>❌ Not in it</h3><span class="chip">Political parties</span><span class="chip">Interest groups</span><span class="chip">PACs &amp; Super PACs</span><span class="chip">Media</span></div>
+    </div>
+
+    <div class="sec"><h2>Separation of powers vs. checks and balances</h2></div>
+    <div class="vs">
+      <div class="card col c-blue"><h3>Separation of powers</h3>Three branches, each with its own powers, none encroaching on the others.</div>
+      <div class="mid">≠</div>
+      <div class="card col c-wine"><h3>Checks &amp; balances</h3>Each branch has tools against the other two, so none can overtake them or act in its own interest.</div>
+    </div>
+    <p class="sub" style="margin-top:10px">Deck question: could we have separation <i>without</i> checks? What would that look like? (See the Case tab.)</p>
+
+    <div class="sec"><h2>What kind of government is it?</h2></div>
+    <div class="grid">
+      <div class="card col c-navy"><h3>Constitutional</h3>A living Constitution sets the framework, powers, and individual rights.</div>
+      <div class="card col c-teal"><h3>Federal</h3>Power shared between national and state governments.</div>
+      <div class="card col c-green"><h3>Republic</h3>We elect representatives to decide for us. <i>(“With a strong democratic tradition?”)</i></div>
+    </div>
+    <p class="sub" style="margin-top:10px"><b>Preamble:</b> states the general purpose and goals; <b>not</b> an independent source of rights.</p>
+
+    <div class="sec"><h2>Amendments by era</h2></div>
+    <div class="grid w2">
+      <div class="era" style="--c:var(--red)"><b>Bill of Rights (1–10)</b><br>
+        <span class="chip">1st speech, press, religion, assembly, petition</span><span class="chip">2nd bear arms</span><span class="chip">3rd no quartering</span><span class="chip">4th privacy / searches</span><span class="chip">5th due process, eminent domain</span><span class="chip">6th attorney</span><span class="chip">7th civil jury</span><span class="chip">8th no cruel punishment</span><span class="chip">9th unlisted rights</span><span class="chip">10th states’ rights</span><br><small>5th–6th include Miranda rights. 1st = freedom of expression.</small></div>
+      <div class="era" style="--c:var(--orange)"><b>Early fixes (11–12)</b><br><span class="chip">11th lawsuits against states</span><span class="chip">12th Electoral College &amp; VP process</span></div>
+      <div class="era" style="--c:var(--purple)"><b>Reconstruction (13–15)</b><br><span class="chip">13th abolished slavery</span><span class="chip">14th citizenship, due process (Incorporation), equal protection</span><span class="chip">15th vote not denied for race</span></div>
+      <div class="era" style="--c:var(--green)"><b>Progressive era (16–19)</b><br><span class="chip">16th income tax</span><span class="chip">17th direct election of Senators</span><span class="chip">18th Prohibition</span><span class="chip">19th vote not denied for sex</span></div>
+      <div class="era" style="--c:var(--blue)"><b>Presidency &amp; booze (20–23)</b><br><span class="chip">20th Inauguration in January</span><span class="chip">21st repealed Prohibition</span><span class="chip">22nd two-term limit</span><span class="chip">23rd D.C. gets 3 electors</span></div>
+      <div class="era" style="--c:var(--teal)"><b>Civil Rights era (24–26)</b><br><span class="chip">24th no poll taxes</span><span class="chip">25th succession &amp; removal</span><span class="chip">26th voting age 18</span></div>
+      <div class="era" style="--c:var(--gold)"><b>Last one (27)</b><br><span class="chip">Congressional raises take effect after next election</span><br><small>Proposed 1789, ratified 1992.</small></div>
+    </div>
+    <div class="quote">“A bill of rights is what the people are entitled to against any government on earth…” <small>Jefferson to Madison, Dec 20, 1787</small></div>
+    <div class="card"><h3>🪦 Amendment graveyard</h3><span class="chip">Outlaw dueling</span><span class="chip">3 Presidents are better than 1</span><span class="chip">Corwin Amendment</span><span class="chip">Widows/spinsters only can vote</span><span class="chip">United States of Earth</span><span class="chip">Limit wealth to $1 million</span><span class="chip">Outlaw drunkenness</span></div>
+  </div>
+
+  <!-- DECK 3 -->
+  <div class="sp" id="sp-d3">
+    <div class="sec"><h2>Federalism in one picture</h2></div>
+    <div class="card top"><span class="tag">Definition</span><p class="big" style="margin:4px 0 0">A written Constitution divides government power on a territorial basis: one national government, many state governments.</p></div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card col c-red"><h3>🏛️ Delegated / Enumerated</h3><p class="sub" style="margin:0 0 6px">The feds. Written in Art. I, Sec. 8.</p><span class="chip">Coin money</span><span class="chip">Commerce</span><span class="chip">Military</span><br><b>Implied powers</b> come from the Necessary &amp; Proper (Elastic) Clause.</div>
+      <div class="card col c-blue"><h3>🏘️ Reserved</h3><p class="sub" style="margin:0 0 6px">The states (10th Amendment).</p><span class="chip">Health, education, welfare</span><span class="chip">Marriage</span><span class="chip">Schools</span><span class="chip">Drinking age</span><span class="chip">Gambling</span></div>
+      <div class="card col c-green"><h3>🤝 Concurrent</h3><p class="sub" style="margin:0 0 6px">Both, separately and at the same time.</p><span class="chip">Taxes</span><span class="chip">Crimes &amp; punishments</span><span class="chip">Roads</span></div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card col c-purple"><h3>Full Faith &amp; Credit</h3>States respect each other’s records and rulings.</div>
+      <div class="card col c-navy"><h3>Supremacy Clause</h3>The Constitution is “the Supreme Law of the Land.”</div>
+      <div class="card col c-orange"><h3>10th Amendment</h3>Powers not delegated to the U.S. nor prohibited to states are reserved to the states or the people.</div>
+    </div>
+
+    <div class="sec"><h2>Two cases about the limits of Congress</h2></div>
+    <div class="grid w2">
+      <div class="card col c-red"><span class="tag">McCulloch v. Maryland · 1819</span>
+        <div class="flow" style="margin-top:8px"><div class="st2"><b>Questions</b><br>Could Congress create the Second Bank? Could Maryland tax it?</div><div class="st2"><b>Ruling</b><br>Unanimous: yes, and no.</div></div>
+        <p style="margin:10px 0 0"><b>Why:</b> Necessary &amp; Proper lets Congress create a bank to carry out taxing, debt, borrowing powers.<br><b>Takeaway:</b> broad reading of the Elastic Clause expands Congress.</p></div>
+      <div class="card col c-blue"><span class="tag">U.S. v. Lopez · 1995</span>
+        <div class="flow" style="margin-top:8px"><div class="st2"><b>Question</b><br>Is the 1990 Gun-Free School Zones Act beyond the Commerce Clause?</div><div class="st2"><b>Ruling</b><br>Yes.</div></div>
+        <p style="margin:10px 0 0"><b>Why:</b> gun possession near a school isn’t economic activity affecting interstate commerce.<br><b>Takeaway:</b> the Commerce Clause has limits.</p></div>
+    </div>
+    <p class="sub" style="margin-top:10px"><b>Commerce Clause:</b> Congress may “regulate commerce with foreign nations and among the several states.” Slide asks: child labor laws? Violence Against Women Act? Affordable Care Act? Gun control? What counts as interstate commerce?</p>
+
+    <div class="sec"><h2>Types of federalism</h2></div>
+    <div class="grid">
+      <div class="card col c-brown"><h3>🍰 Dual (layer cake)</h3>Authority clearly divided among national, state and local governments.</div>
+      <div class="card col c-green"><h3>🤝 Cooperative</h3>Governments work together, often with conditions. Example: highway money if states enforce the drinking age.</div>
+      <div class="card col c-gold"><h3>💰 Fiscal</h3>The pattern of spending, taxing and grants in the system.</div>
+    </div>
+
+    <div class="sec"><h2>Categorical vs. block grants</h2></div>
+    <p class="sub">Want more? The <b>💰 Grants</b> tab goes deeper.</p>
+    <div class="card"><table class="t2">
+      <tr><th></th><th>📎 Categorical</th><th>🧱 Block</th></tr>
+      <tr><td><b>Use</b></td><td>Specific purposes, “strings attached”</td><td>Broad programs</td></tr>
+      <tr><td><b>Awarded by</b></td><td>Formula: population, poverty, income, unemployment, enrollment</td><td>Automatically</td></tr>
+      <tr><td><b>Oversight</b></td><td>More federal control (and more common)</td><td>Less oversight, more state flexibility</td></tr>
+      <tr><td><b>Examples</b></td><td>Head Start, Food Stamps, Asbestos Abatement</td><td>TANF, Homeland Security / infrastructure</td></tr>
+      <tr><td><b>Criticism</b></td><td>—</td><td>Hard to measure performance and hold officials accountable</td></tr></table></div>
+
+    <div class="sec"><h2>Case study: marijuana and federalism</h2></div>
+    <div class="tl">
+      <div class="ev" style="--c:var(--green)"><b>2013 Cole Memo</b><span>Still a “dangerous drug,” but DOJ leaves state marijuana enforcement to states; targets large for-profit enterprises, not the seriously ill and caregivers</span></div>
+      <div class="ev" style="--c:var(--red)"><b>2018 Sessions Memo</b><span>Rescinds prior marijuana guidance; CSA penalties reflect Congress’s view it is a serious crime</span></div>
+      <div class="ev" style="--c:var(--navy)"><b>Takeaway</b><span>Same federal law, different enforcement depending on who runs the executive branch</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOCUMENTS ================= -->
+<section class="panel" id="p-docs">
+  <div class="dpick" id="dpick"></div>
+  <div id="docview"></div>
+</section>
+
+<!-- ================= CASE ================= -->
+<section class="panel" id="p-case">
+  <div class="card top" style="--c:var(--wine);border-top-color:var(--wine)"><span class="tag" style="--c:var(--wine)">Clinton v. City of New York · 1998</span>
+    <p class="big" style="margin:6px 0 0">Can Congress give the President a line-item veto? <b>No (6–3).</b></p>
+    <p class="sub" style="margin:6px 0 0">Assumed to be the case paired with Federalist 51. See the note at the bottom if your teacher meant a different one.</p></div>
+
+  <div class="sec"><h2>What happened</h2></div>
+  <div class="flow">
+    <div class="st2"><span class="n">1</span><br><b>The law</b><br>Line Item Veto Act of 1996 lets the President “cancel” items in spending and limited-tax-benefit bills after signing.</div><div class="ar">➜</div>
+    <div class="st2"><span class="n">2</span><br><b>The cancellations</b><br>In 1997 Clinton cancels provisions, including a New York Medicaid-related benefit and an Idaho potato growers’ tax break.</div><div class="ar">➜</div>
+    <div class="st2"><span class="n">3</span><br><b>The lawsuit</b><br>New York City and potato growers sue.</div><div class="ar">➜</div>
+    <div class="st2"><span class="n">4</span><br><b>The ruling</b><br>Supreme Court, 6–3 (Justice Stevens): unconstitutional.</div>
+  </div>
+
+  <div class="sec"><h2>Why it fails</h2></div>
+  <div class="grid">
+    <div class="card col c-wine"><h3>Presentment Clause</h3>Art. I, Sec. 7: the President can only <b>sign or veto a whole bill</b>.</div>
+    <div class="card col c-wine"><h3>Bicameralism</h3>Cancelling parts of a law amounts to amending or repealing it without both houses.</div>
+    <div class="card col c-wine"><h3>Dissent</h3>Scalia, O’Connor and Breyer: this is ordinary executive discretion over spending Congress may delegate.</div>
+  </div>
+
+  <div class="sec"><h2>How it connects to Federalist 51</h2></div>
+  <div class="grid">
+    <div class="card col c-teal"><h3>“A will of its own”</h3>Each branch must stay independent. Congress can’t hand the President a lawmaking power.</div>
+    <div class="card col c-teal"><h3>Ambition vs. ambition</h3>Here Congress <i>gave</i> power away. The Court acted as the check Madison wanted.</div>
+    <div class="card col c-teal"><h3>Separation vs. checks</h3>A veto is a legitimate check (all-or-nothing). Line-item cancellation lets the President write law.</div>
+    <div class="card col c-teal"><h3>The reverse danger</h3>Madison feared the legislature dominating; this case shows executive growth.</div>
+  </div>
+
+  <div class="note"><b>Different case?</b> If your teacher meant <b><i>New York v. United States</i> (1992)</b>: Congress can’t “commandeer” state legislatures to carry out federal programs (the radioactive-waste “take title” provision). It’s a 10th Amendment and federalism case, and explains why states can legalize marijuana even though federal law bans it: states needn’t enforce federal law, though the Supremacy Clause keeps it in force.</div>
+</section>
+
+<!-- ================= GRANTS ================= -->
+<section class="panel" id="p-grants">
+<style>
+.dial{position:relative;height:16px;border-radius:99px;background:linear-gradient(90deg,#b3261e,#c8962e,#2e7d5b);margin:30px 8px 8px}
+.dial span{position:absolute;top:-26px;transform:translateX(-50%);font:700 12px system-ui;white-space:nowrap}
+.dial i{position:absolute;top:-5px;width:26px;height:26px;border-radius:50%;background:var(--card);border:4px solid var(--ink);transform:translateX(-50%)}
+.dial-l{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute);margin:0 8px 6px}
+</style>
+  <div class="card top" style="--c:var(--gold);border-top-color:var(--gold)"><span class="tag" style="--c:var(--gold)">Fiscal federalism</span>
+    <p class="big" style="margin:6px 0 0">Grants are how the national government steers state policy with money instead of orders.</p>
+    <p class="sub" style="margin:6px 0 0">Deck 3 definition: fiscal federalism is the pattern of spending, taxing and providing grants in the federal system.</p></div>
+
+  <div class="sec"><h2>How a grant works</h2></div>
+  <div class="flow">
+    <div class="st2"><span class="n" style="background:var(--gold)">1</span><br><b>Feds tax</b><br>Washington collects far more revenue than it can spend directly on local needs.</div><div class="ar">➜</div>
+    <div class="st2"><span class="n" style="background:var(--gold)">2</span><br><b>Offer money</b><br>Congress offers funds to states and localities for a goal.</div><div class="ar">➜</div>
+    <div class="st2"><span class="n" style="background:var(--gold)">3</span><br><b>Strings?</b><br>The more conditions, the more federal control.</div><div class="ar">➜</div>
+    <div class="st2"><span class="n" style="background:var(--gold)">4</span><br><b>States decide</b><br>Accept the money and the rules, or decline.</div>
+  </div>
+
+  <div class="sec"><h2>Who controls the money? The control dial</h2></div>
+  <div class="dial"><span style="left:18%;color:var(--red)">Categorical grants</span><span style="left:82%;color:var(--green)">Block grants</span><i style="left:18%"></i></div>
+  <div class="dial-l"><span>⬅ More federal control</span><span>More state flexibility ➡</span></div>
+
+  <div class="vs" style="margin-top:14px">
+    <div class="card col c-red"><h3>📎 Categorical grants</h3>
+      <p class="sub" style="margin:0 0 6px">“Comes with strings attached”</p>
+      <ul class="t"><li>Only for <b>specific purposes</b></li><li>Awarded to governmental applicants who meet qualifications by a <b>pre-defined formula</b></li><li><b>More common</b></li></ul>
+      <p style="margin:10px 0 4px"><b>Formula can use:</b></p>
+      <span class="chip">Population</span><span class="chip">Poverty</span><span class="chip">Per capita income</span><span class="chip">Unemployment</span><span class="chip">Public school enrollment</span>
+      <p style="margin:10px 0 4px"><b>Examples:</b></p>
+      <span class="chip c" style="--c:var(--red)">Head Start</span><span class="chip c" style="--c:var(--red)">Food Stamps</span><span class="chip c" style="--c:var(--red)">Asbestos Abatement</span></div>
+    <div class="mid">VS</div>
+    <div class="card col c-green"><h3>🧱 Block grants</h3>
+      <p class="sub" style="margin:0 0 6px">“Here’s the money, you figure it out”</p>
+      <ul class="t"><li>Given <b>automatically</b> for <b>broad programs</b></li><li><b>Less oversight</b> from the federal government</li><li><b>Flexibility</b> for each state</li></ul>
+      <p style="margin:10px 0 4px"><b>Examples:</b></p>
+      <span class="chip c" style="--c:var(--green)">Temporary Assistance for Needy Families</span><span class="chip c" style="--c:var(--green)">Homeland Security / Critical Infrastructure Upgrades</span>
+      <p style="margin:10px 0 4px"><b>Critics say:</b></p>
+      <ul class="t"><li>Decentralized, so performance is hard to measure and officials hard to hold accountable</li><li>Deck claim: research generally finds them ineffective at reaching policy goals</li></ul></div>
+  </div>
+
+  <div class="sec"><h2>Pros and cons at a glance</h2></div>
+  <div class="card"><table class="t2">
+    <tr><th></th><th>Categorical</th><th>Block</th></tr>
+    <tr><td><b>Pro</b></td><td>Federal goals are met; money goes where intended; targets need (formula)</td><td>States tailor programs to local needs; less paperwork</td></tr>
+    <tr><td><b>Con</b></td><td>One-size-fits-all rules; states may feel pushed around</td><td>Money may drift from the original goal; weaker accountability</td></tr>
+    <tr><td><b>Federalism type</b></td><td>Cooperative federalism with strong federal direction</td><td>Closer to state discretion, a step toward reserved-powers thinking</td></tr></table></div>
+
+  <div class="sec"><h2>Cooperative federalism in action</h2></div>
+  <div class="card col c-purple"><span class="tag" style="--c:var(--purple)">Deck example</span>
+    <div class="flow" style="margin-top:8px">
+      <div class="st2"><b>Congress wants</b><br>A higher drinking age</div><div class="ar">➜</div>
+      <div class="st2"><b>But</b><br>The drinking age is a <i>reserved</i> state power</div><div class="ar">➜</div>
+      <div class="st2"><b>So it offers</b><br>Highway-repair money <b>on the condition</b> states enforce it</div></div>
+    <p class="sub" style="margin:10px 0 0">The feds can’t simply command the states, but they can attach conditions to money. Congress gets its policy; states keep the choice.</p></div>
+
+  <div class="sec"><h2>The Supreme Court on strings</h2><span class="chip" style="margin-left:auto">Beyond your slides · general knowledge</span></div>
+  <div class="grid w2">
+    <div class="card col c-navy"><span class="tag">South Dakota v. Dole · 1987</span>
+      <p style="margin:6px 0">Upheld Congress withholding a small share of federal highway funds from states that kept the drinking age below 21.</p>
+      <p class="sub" style="margin:0">Conditions must serve the general welfare, be clearly stated, relate to the purpose of the funds, and not be unconstitutional themselves or coercive.</p></div>
+    <div class="card col c-wine"><span class="tag">NFIB v. Sebelius · 2012</span>
+      <p style="margin:6px 0">Held that Congress went too far by threatening states’ <i>existing</i> Medicaid money if they refused to expand Medicaid. That was coercion, not a choice.</p>
+      <p class="sub" style="margin:0">Takeaway: there is a limit to how heavy the strings can be.</p></div>
+  </div>
+
+  <div class="sec"><h2>Why grants matter for the rest of the unit</h2></div>
+  <div class="grid">
+    <div class="card col c-orange"><h3>Brutus 1</h3>Feared the federal taxing power would swallow up the states’. Grants are that power at work.</div>
+    <div class="card col c-purple"><h3>Articles</h3>Had no taxing power, so it could only <i>ask</i> states for money. The Constitution fixed that (Art. I, Sec. 8).</div>
+    <div class="card col c-blue"><h3>10th Amendment</h3>Reserved powers stay with states, yet money lets Congress influence them anyway.</div>
+    <div class="card col c-teal"><h3>Fed 51</h3>“Double security”: grants are one way the two layers of government negotiate.</div>
+    <div class="card col c-wine"><h3>Anti-commandeering</h3>Congress can’t <i>order</i> state governments around (<i>New York v. United States</i>), but it can <i>pay</i> them to cooperate.</div>
+    <div class="card col c-green"><h3>16th Amendment</h3>The federal income tax gave Washington the revenue to fund grants at scale.</div>
+  </div>
+
+  <div class="sec"><h2>Quick check: categorical or block?</h2></div>
+  <details class="dd"><summary>Head Start</summary><div class="in"><b>Categorical.</b> Specific purpose (early childhood programs) with federal rules.</div></details>
+  <details class="dd"><summary>Temporary Assistance for Needy Families (TANF)</summary><div class="in"><b>Block.</b> Broad program; states have wide flexibility over how to run it.</div></details>
+  <details class="dd"><summary>Highway money tied to a drinking age of 21</summary><div class="in"><b>Categorical (conditional).</b> The deck uses it as the example of cooperative federalism.</div></details>
+  <details class="dd"><summary>Homeland Security / critical infrastructure upgrades</summary><div class="in"><b>Block.</b> Given automatically for a broad goal.</div></details>
+  <details class="dd"><summary>A grant distributed by poverty rate and school enrollment</summary><div class="in"><b>Categorical.</b> Awarded by a pre-defined formula, as in the deck.</div></details>
+</section>
+
+<!-- ================= CONNECTIONS ================= -->
+<section class="panel" id="p-connect">
+  <div class="sec" style="margin-top:0"><h2>Who talks about what?</h2></div>
+  <div class="tw"><table class="mx" id="matrix"></table></div>
+
+  <div class="sec"><h2>Federalists vs. Anti-Federalists</h2></div>
+  <div class="vs">
+    <div class="card col c-blue"><h3>Federalists</h3><span class="sub">Fed 10, Fed 51</span>
+      <ul class="t"><li>Articles too weak; replace them</li><li>Big republic dilutes faction</li><li>Fear: instability, majority tyranny</li><li>Protect liberty by <b>structure</b></li><li>Bill of rights not needed at first</li></ul></div>
+    <div class="mid">VS</div>
+    <div class="card col c-orange"><h3>Anti-Federalists</h3><span class="sub">Brutus 1, Federal Farmer</span>
+      <ul class="t"><li>Fix the Articles, don’t consolidate</li><li>Only small republics work</li><li>Fear: distant, elite national tyranny</li><li>Protect liberty with <b>written rights</b> and state power</li><li>Wanted a bill of rights before ratifying</li></ul></div>
+  </div>
+  <p class="sub" style="margin-top:8px">Legacy: Federalists → the Constitution’s design. Anti-Federalists → the Bill of Rights and 10th Amendment.</p>
+
+  <div class="sec"><h2>Seven threads</h2></div>
+  <div class="card">
+    <b>1 · Consent of the governed</b>
+    <div class="chain"><span class="n">Locke</span><span class="a">➜</span><span class="n">Declaration</span><span class="a">➜</span><span class="n">Stamp Act / Magna Carta</span><span class="a">➜</span><span class="n k" style="--c:var(--red)">Popular sovereignty</span><span class="a">➜</span><span class="n">“We the People,” Art. VII</span></div>
+    <b>2 · Limited government</b>
+    <div class="chain"><span class="n">Locke’s limited legislature</span><span class="a">➜</span><span class="n">Declaration’s grievances</span><span class="a">➜</span><span class="n">Enumerated powers</span><span class="a">➜</span><span class="n k" style="--c:var(--blue)">10th Amendment</span><span class="a">➜</span><span class="n">Lopez</span></div>
+    <b>3 · Too weak or too strong?</b>
+    <div class="chain"><span class="n">Articles (too weak)</span><span class="a">➜</span><span class="n">Constitution</span><span class="a">➜</span><span class="n">Brutus: Elastic Clause too broad</span><span class="a">➜</span><span class="n k" style="--c:var(--wine)">McCulloch proves it</span></div>
+    <b>4 · Faction and size</b>
+    <div class="chain"><span class="n k" style="--c:var(--blue)">Fed 10: big is safer</span><span class="a">⇄</span><span class="n k" style="--c:var(--orange)">Brutus: small is safer</span><span class="a">➜</span><span class="n">Pluralism vs. participatory</span><span class="a">➜</span><span class="n">Interest groups, PACs</span></div>
+    <b>5 · Dividing power twice</b>
+    <div class="chain"><span class="n k" style="--c:var(--teal)">Fed 51 “double security”</span><span class="a">➜</span><span class="n">Federalism (McCulloch, Lopez, grants)</span><span class="a">+</span><span class="n">Separation of powers (Clinton)</span><span class="a">➜</span><span class="n">Judicial review enforces both</span></div>
+    <b>6 · Rights</b>
+    <div class="chain"><span class="n">Natural rights</span><span class="a">➜</span><span class="n">Unalienable rights</span><span class="a">➜</span><span class="n">“No bill of rights!”</span><span class="a">➜</span><span class="n k" style="--c:var(--green)">Bill of Rights</span><span class="a">➜</span><span class="n">13th–15th, 19th amendments</span></div>
+    <b>7 · Money as power</b>
+    <div class="chain"><span class="n">Taxation without consent</span><span class="a">➜</span><span class="n">Articles can’t tax</span><span class="a">➜</span><span class="n">Brutus fears federal tax power</span><span class="a">➜</span><span class="n k" style="--c:var(--gold)">Grants with strings</span></div>
+  </div>
+
+  <div class="sec"><h2>Articles of Confederation → Constitution</h2></div>
+  <div class="card" id="fixbox"></div>
+
+  <div class="sec"><h2>Still happening today</h2></div>
+  <div class="grid">
+    <div class="card col c-green"><h3>🌿 Marijuana</h3>Federalism + Supremacy Clause + executive enforcement choices (Cole vs. Sessions).</div>
+    <div class="card col c-blue"><h3>📝 Executive power</h3>Executive orders and Clinton v. NYC ask Fed 51’s question: who stops a branch from growing?</div>
+    <div class="card col c-wine"><h3>🗳️ Electoral College</h3>Popular-vote losers who won raise the “is it really popular sovereignty?” question.</div>
+    <div class="card col c-gold"><h3>🕊️ Gettysburg Address</h3>Lincoln re-reads “all men are created equal” as the nation’s founding promise.</div>
+  </div>
+</section>
+
+<!-- ================= ARGUMENT FRQ ================= -->
+<section class="panel" id="p-frq">
+<style>
+.lk{display:inline-block;font:700 11.5px system-ui;color:#fff;border-radius:7px;padding:2px 8px;margin-right:6px;white-space:nowrap}
+.pt{display:flex;gap:6px;align-items:flex-start;margin:8px 0;font-size:14px}
+.pt .lk{flex:none;margin-top:1px}
+.badge{display:inline-block;border-radius:99px;padding:2px 11px;font:700 12px system-ui;color:#fff}
+.sidehd{padding:10px 14px;border-radius:10px 10px 0 0;color:#fff;font:700 15px Georgia,serif;margin:-16px -18px 10px}
+.rub{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.rub div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.rub b{display:block;font:800 22px Georgia,serif;color:var(--navy)}
+@media(prefers-color-scheme:dark){.rub b{color:var(--gold)}}
+.frqtop{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 6px}
+</style>
+
+  <div class="card top"><span class="tag">AP-style argument essay</span>
+    <p class="big" style="margin:6px 0 0">Pick a side, defend it with accurate evidence, and respond to the other side.</p>
+    <p class="sub" style="margin:6px 0 0">Topics below are <b>my best guesses</b> based on your unit, not an official list. Pick the side you can back with the strongest documents.</p></div>
+
+  <div class="sec"><h2>What the essay is graded on</h2></div>
+  <div class="rub">
+    <div><b>1</b>Claim / thesis<br><small class="sub">A defensible position with a line of reasoning</small></div>
+    <div><b>up to 3</b>Evidence<br><small class="sub">Specific, accurate; at least one from a required foundational document</small></div>
+    <div><b>1</b>Reasoning<br><small class="sub">Explain <i>how</i> the evidence proves the claim</small></div>
+    <div><b>1</b>Alternate perspective<br><small class="sub">Address the other side and rebut or qualify it</small></div>
+  </div>
+  <div class="note">Point breakdown is from memory of the AP rubric. Confirm the exact rules and the list of required documents with your teacher or the course framework. Federal Farmer and <i>Clinton v. City of New York</i> are great in your class, but check whether they count as “required.”</div>
+
+  <div class="sec"><h2>Pick a topic</h2></div>
+  <div class="dpick" id="tpick"></div>
+  <div id="tview"></div>
+
+  <div class="sec"><h2>Your document arsenal</h2></div>
+  <p class="sub">What each source is best used to argue.</p>
+  <div class="grid">
+    <div class="card col c-red"><h3>Declaration + Locke</h3><ul class="t"><li>Consent and popular sovereignty</li><li>Natural rights are the point of government</li><li>People may alter or abolish government</li><li>Limits on a single ruler (the king’s abuses)</li></ul></div>
+    <div class="card col c-purple"><h3>Articles of Confederation</h3><ul class="t"><li>Shows what a <b>too-weak</b> national government looks like</li><li>Supports taxing, spending, a real executive, national power</li><li>Unanimous amendment = reform impossible</li></ul></div>
+    <div class="card col c-green"><h3>Federal Farmer</h3><ul class="t"><li>Fear of consolidation</li><li>Representation of ordinary people</li><li>Need for a bill of rights</li></ul></div>
+    <div class="card col c-orange"><h3>Brutus 1</h3><ul class="t"><li>Small republics, local control, state power</li><li>Elastic and Supremacy Clauses are dangerous</li><li>Federal tax power swallows states</li><li>Elite-run distant government</li></ul></div>
+    <div class="card col c-blue"><h3>Federalist 10</h3><ul class="t"><li>Large republic dilutes faction</li><li>Representatives over direct democracy</li><li>Control factions’ <i>effects</i>, not causes</li><li>Protecting minorities from majorities</li></ul></div>
+    <div class="card col c-teal"><h3>Federalist 51</h3><ul class="t"><li>Separation of powers and checks</li><li>“Ambition counteracts ambition”</li><li>Double security: federalism + branches</li><li>Justice as the end of government</li></ul></div>
+    <div class="card col c-navy"><h3>Constitution</h3><ul class="t"><li><b>Art. I §8:</b> tax, spend, commerce, Necessary &amp; Proper</li><li><b>Art. I §7:</b> presentment</li><li><b>Art. II:</b> Take Care, Commander-in-Chief</li><li><b>Art. V:</b> amendments · <b>Art. VI:</b> Supremacy</li><li><b>1st / 10th Amendments</b></li></ul></div>
+    <div class="card col c-wine"><h3>Cases from your unit</h3><ul class="t"><li><b>McCulloch:</b> broad national power</li><li><b>Lopez:</b> limits on Commerce power</li><li><b>Clinton v. NYC:</b> separation of powers</li><li><b>Dole / NFIB:</b> conditions on grants</li></ul></div>
+  </div>
+
+  <div class="sec"><h2>Thesis templates</h2></div>
+  <div class="grid">
+    <div class="card"><span class="tag">Because-because</span><p style="margin:6px 0 0"><b>[Position]</b>, because <b>[reason 1 from Document A]</b> and <b>[reason 2 from Document B or a case]</b>.</p></div>
+    <div class="card"><span class="tag">Although</span><p style="margin:6px 0 0">Although <b>[other side’s best point]</b>, <b>[your position]</b>, because <b>[your strongest reason]</b>.</p></div>
+    <div class="card"><span class="tag">Example (grants)</span><p style="margin:6px 0 0">Congress should rely mainly on categorical grants, because the Articles of Confederation show that a national government without real fiscal power cannot get states to act, and conditions on money let Congress protect national goals without commanding states.</p></div>
+  </div>
+
+  <div class="sec"><h2>Quick checklist</h2></div>
+  <div class="grid">
+    <div class="card col c-green"><h3>✅ Do</h3><ul class="t"><li>Name the document and say <b>what it actually argues</b></li><li>Explain <b>how</b> the evidence supports <i>your</i> claim</li><li>Use “although/however” to answer the other side</li><li>Use one document + one case or concept</li></ul></div>
+    <div class="card col c-red"><h3>❌ Avoid</h3><ul class="t"><li>Just naming a document without explaining it</li><li>Summarizing the document instead of arguing</li><li>Mixing up who said what (Brutus vs. Madison)</li><li>Ignoring the other side</li></ul></div>
+  </div>
+</section>
+
+<!-- ================= VOCAB ================= -->
+<section class="panel" id="p-vocab">
+  <div class="vtools">
+    <input id="vq" type="search" placeholder="Search a term or definition…">
+    <span class="vcount" id="vcount"></span>
+  </div>
+  <div class="dpick" id="vcats" style="margin-bottom:14px"></div>
+  <p class="sub">Click a card to flip it.</p>
+  <div class="grid" id="vgrid"></div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section class="panel" id="p-quiz">
+  <div class="qz"><div class="bar"><i id="qbar"></i></div><div id="qbox" class="card"></div></div>
+</section>
+
+</div>
+<footer>Built from your three slide decks plus the listed founding documents and case.</footer>
+
+<script>
+/* ---------- data ---------- */
+var DOCS=[
+ {id:"locke",n:"Locke’s Second Treatise",s:"Locke",c:"#7a5c2e",d:"1689",by:"John Locke",
+  one:"People form government by consent to protect their natural rights, and can replace it if it betrays them.",
+  ideas:["<b>State of nature:</b> people are free and equal, guided by reason’s law of nature","<b>Natural rights:</b> life, liberty, property","<b>Social contract:</b> consent creates government because the state of nature has no common judge","<b>Limited government:</b> the legislature must rule by known laws for the public good","<b>Right of revolution:</b> after a long train of abuses, the people may replace it"],
+  rem:"Rights first, government second.",
+  links:["Declaration","Social contract","Popular sovereignty","Divine right (his target)"]},
+ {id:"doi",n:"Declaration of Independence",s:"Declaration",c:"#b3261e",d:"July 4, 1776",by:"Thomas Jefferson & Continental Congress",
+  one:"Locke’s argument applied to a breakup: government exists to secure rights, and King George III broke the deal.",
+  ideas:["<b>Preamble:</b> all men created equal, with unalienable rights: life, liberty, pursuit of happiness","<b>Consent:</b> governments get their just powers from the governed","<b>Right to alter or abolish</b> a destructive government","<b>Grievances</b> against the king (taxation without consent, no jury trials, quartering troops) prove tyranny","<b>Tension:</b> slaveholding signers; “Remember the ladies”"],
+  rem:"Locke wrote “property”; Jefferson wrote “pursuit of happiness.”",
+  links:["Locke","Stamp Act & Magna Carta","Gettysburg Address","13th–15th, 19th Amendments"]},
+ {id:"aoc",n:"Articles of Confederation",s:"Articles",c:"#6b4fa0",d:"Drafted 1777 · in effect 1781",by:"Continental Congress",
+  one:"A “league of friendship” among sovereign states with a national government too weak to function.",
+  ideas:["<b>Design:</b> one-house Congress, one vote per state","<b>No executive and no national courts</b>","<b>9 of 13 states</b> to pass major laws; <b>unanimous</b> to amend","<b>No power to tax</b> (only requests to states) and <b>no commerce power</b>","<b>Proof it failed:</b> Shays’ Rebellion (1786–87)","<b>Wins:</b> Treaty of Paris 1783, Northwest Ordinance 1787"],
+  rem:"Weak center, strong states.",
+  fix:[["One house, one vote per state","Two houses (House by population)"],["No executive","President (Art. II)"],["No national courts","Federal judiciary (Art. III)"],["No taxing power","Tax, borrow, regulate commerce (Art. I, Sec. 8)"],["Amend only unanimously","2/3 propose, 3/4 ratify (Art. V)"],["States sovereign","Supremacy Clause (Art. VI)"]],
+  links:["Federal Farmer","Shays’ Rebellion","Constitution","Brutus 1"]},
+ {id:"ff",n:"The Federal Farmer",s:"Federal Farmer",c:"#2e7d5b",d:"Oct 1787 – Jan 1788",by:"Anti-Federalist (pseudonym; author debated)",
+  one:"Yes, strengthen the Articles, but this Constitution consolidates too much power and protects too few rights.",
+  ideas:["<b>Moderate:</b> admits the Articles need fixing","<b>Consolidation:</b> states would be swallowed by one national government","<b>Too few representatives:</b> ordinary “middling” people shut out; elites rule","<b>No bill of rights</b> to protect jury trial, press, conscience","<b>Wants amendments</b> before ratification"],
+  rem:"The fight wasn’t strong vs. weak. It was how much national power.",
+  links:["Articles","Brutus 1","Bill of Rights","10th Amendment"]},
+ {id:"brutus",n:"Brutus 1",s:"Brutus 1",c:"#c2570c",d:"Oct 18, 1787",by:"Anti-Federalist essayist · New York Journal",
+  one:"A republic this big will collapse into despotism; liberty needs small republics and closer representatives.",
+  ideas:["<b>Consolidation:</b> a true federation becomes one national government","<b>Small republics only:</b> shared interests, known representatives, accountability (Montesquieu)","<b>Dangerous clauses:</b> Necessary &amp; Proper and Supremacy are open-ended","<b>Taxing power</b> would swallow up the states’; plus a standing army","<b>Too few representatives; no bill of rights</b>"],
+  rem:"His Elastic Clause warning reads like a forecast of McCulloch.",
+  links:["Federalist 10 (direct rebuttal)","McCulloch","Fiscal federalism","Participatory democracy"]},
+ {id:"f10",n:"Federalist 10",s:"Fed 10",c:"#1f5f8b",d:"Nov 22, 1787",by:"James Madison (as “Publius”)",
+  one:"You can’t remove factions without destroying liberty, so build a big republic that controls their effects.",
+  ideas:["<b>Faction:</b> a group united by an interest adverse to others’ rights or the community’s good","<b>Causes:</b> human nature, especially unequal property","<b>Two cures fail:</b> destroy liberty or force one opinion, so control the <i>effects</i>","<b>Pure democracy</b> can’t stop a majority faction","<b>Republic:</b> elected representatives who refine views, plus a larger sphere with more interests, so no single majority forms easily"],
+  rem:"Big is better: more groups means weaker factions.",
+  links:["Brutus 1 (the reply)","Pluralism","Interest groups & PACs","Fed 51"]},
+ {id:"f51",n:"Federalist 51",s:"Fed 51",c:"#0e7490",d:"Feb 6, 1788",by:"James Madison (as “Publius”)",
+  one:"Give each branch the motive and means to resist the others, because angels don’t run governments.",
+  ideas:["<b>“A will of its own”:</b> branches should be as independent as possible","<b>“Ambition must be made to counteract ambition”</b>","<b>“If men were angels, no government would be necessary”</b>: control the governed <i>and</i> the government","<b>Divide the legislature</b> into two houses (it is the strongest branch)","<b>Double security:</b> power split between nation and states, then among branches","<b>Justice is the end of government</b>"],
+  rem:"Structure, not goodwill, protects liberty.",
+  links:["Clinton v. City of New York","Checks & balances","Federalism","Fed 10"]}
+];
+
+var VOC=[
+["Limited government","Power restricted by laws or a written constitution.","Ideals"],
+["Natural rights","Rights (life, liberty, property) no government may take away.","Ideals"],
+["Unalienable rights","Rights that can’t be given up: life, liberty, pursuit of happiness.","Ideals"],
+["Popular sovereignty","Government’s power comes from the consent of the people.","Ideals"],
+["Consent of the governed","Government is legitimate only if the people agree to it.","Ideals"],
+["Republicanism","Governing through elected representatives.","Ideals"],
+["Social contract","People consent to be governed if government protects their rights.","Ideals"],
+["Divine right theory","God created the state and gives royalty the right to rule.","Ideals"],
+["State of nature","Locke’s condition before government: free and equal, no common judge.","Ideals"],
+["Power","The ability to get others to act, rightful or not.","Ideals"],
+["Authority","The right to use power.","Ideals"],
+["Legitimate power","Power from law or constitution that is democratic and widely accepted.","Ideals"],
+["Elitist theory","A small economic elite holds the most power.","Ideals"],
+["Pluralism","Competing groups and interests shape policy.","Ideals"],
+["Participatory democracy","Citizens decide policy directly.","Ideals"],
+["Magna Carta","1215 charter limiting the king; cited against the Stamp Act.","Ideals"],
+["Stamp Act (1765)","British tax on printed goods, opposed as taxation without consent.","Ideals"],
+
+["Articles of Confederation","First U.S. government: weak center, one vote per state, no tax power.","Documents"],
+["Shays’ Rebellion","1786–87 farmer uprising exposing the Articles’ weakness.","Documents"],
+["Federalists","Backed ratification and a stronger national government.","Documents"],
+["Anti-Federalists","Opposed ratification; feared consolidation; wanted a bill of rights.","Documents"],
+["Federal Farmer","Pseudonymous Anti-Federalist letter writer.","Documents"],
+["Brutus","Pseudonymous Anti-Federalist essayist: big republics fail.","Documents"],
+["Consolidation","Fear that states would be absorbed into one national government.","Documents"],
+["Faction","Group united by an interest adverse to others’ rights or the public good.","Documents"],
+["Pure democracy","Citizens govern directly; can’t restrain majority faction.","Documents"],
+["Extended republic","Large republic with many interests that dilute factions.","Documents"],
+["Double security","Fed 51: power divided between nation and states, then among branches.","Documents"],
+["“Ambition counteracts ambition”","Fed 51: give each branch motive and means to resist others.","Documents"],
+["Bill of Rights","First ten amendments (1791), the Anti-Federalists’ demand.","Documents"],
+["Preamble","Statement of the Constitution’s goals; not a source of rights.","Documents"],
+
+["Separation of powers","Dividing government into three branches with distinct powers.","Structure"],
+["Checks and balances","Each branch’s tools to limit the others.","Structure"],
+["Judicial review","Courts’ power to strike down unconstitutional acts.","Structure"],
+["Presentment Clause","Art. I, Sec. 7: bills go to the President to sign or veto whole.","Structure"],
+["Bicameralism","A two-house legislature.","Structure"],
+["Line item veto","Power to cancel parts of a bill; struck down in Clinton v. NYC.","Structure"],
+["Enumeration Clause","Counting population for House seats.","Structure"],
+["Writ of habeas corpus","Order requiring a detained person be brought before a judge.","Structure"],
+["Electoral College","Electors, not direct popular vote, choose the President.","Structure"],
+["Take Care Clause","President must faithfully execute laws; basis for executive orders.","Structure"],
+["Advice and consent","Senate approval of treaties and appointments.","Structure"],
+["High crimes and misdemeanors","Constitutional grounds for impeachment.","Structure"],
+["Original vs. appellate jurisdiction","Hearing a case first vs. reviewing a lower court.","Structure"],
+["Full Faith and Credit","States respect each other’s records and rulings.","Structure"],
+["Guarantee Clause","U.S. guarantees states a republican government.","Structure"],
+["Supremacy Clause","Federal law is supreme over conflicting state law.","Structure"],
+["Ratification","Formal approval; 9 states needed (Art. VII).","Structure"],
+["Amendment process","2/3 propose, 3/4 of states ratify (Art. V).","Structure"],
+["Due Process Clause","No loss of life, liberty, property without fair procedures.","Structure"],
+["Incorporation Doctrine","14th Amendment applies Bill of Rights protections to states.","Structure"],
+["Equal Protection Clause","States must give equal protection of the laws.","Structure"],
+["Eminent domain","Taking private property for public use with compensation.","Structure"],
+["Establishment / Free Exercise","No state religion / freedom to practice religion.","Structure"],
+["Poll tax","Fee to vote; banned federally by the 24th Amendment.","Structure"],
+
+["Federalism","Constitution divides power on a territorial basis.","Federalism"],
+["Enumerated powers","Powers listed for the feds, mainly Art. I, Sec. 8.","Federalism"],
+["Necessary and Proper (Elastic) Clause","Lets Congress do what’s needed to carry out its powers.","Federalism"],
+["Implied powers","Unlisted powers reasonably needed for listed ones.","Federalism"],
+["Reserved powers","State powers under the 10th Amendment.","Federalism"],
+["Concurrent powers","Shared by nation and states: taxes, crimes, roads.","Federalism"],
+["Police powers","State power over health, safety, welfare.","Federalism"],
+["Commerce Clause","Congress regulates commerce with foreign nations and among states.","Federalism"],
+["Dual (layer cake) federalism","Clearly separate national and state layers.","Federalism"],
+["Cooperative federalism","Governments cooperate, often via conditional funds.","Federalism"],
+["Fiscal federalism","Pattern of spending, taxing, grants in the system.","Federalism"],
+["Categorical grant","Federal money for specific purposes with strings attached.","Federalism"],
+["Block grant","Federal money for broad programs with state flexibility.","Federalism"],
+["Formula grant","Money awarded by a pre-set formula (poverty, population, enrollment).","Federalism"],
+["Strings attached","Conditions the federal government puts on grant money.","Federalism"],
+["South Dakota v. Dole (1987)","Upheld tying highway funds to a drinking age of 21.","Federalism"],
+["NFIB v. Sebelius (2012)","Medicaid funding threat was unconstitutionally coercive.","Federalism"],
+["Anti-commandeering","Congress can’t force states to run federal programs.","Federalism"],
+["McCulloch v. Maryland (1819)","Upheld national bank; states can’t tax it.","Federalism"],
+["U.S. v. Lopez (1995)","Gun-Free School Zones Act exceeded Commerce power.","Federalism"],
+["Clinton v. City of New York (1998)","Line Item Veto Act unconstitutional (6–3).","Federalism"],
+["Cole Memo (2013)","DOJ leaves state marijuana enforcement mostly to states.","Federalism"],
+["Sessions Memo (2018)","Rescinded Cole Memo’s marijuana guidance.","Federalism"]
+];
+var VCOL={Ideals:"#b3261e",Documents:"#6b4fa0",Structure:"#1f5f8b",Federalism:"#2e7d5b"};
+
+var QS=[
+["Which idea did Jefferson take from Locke but change slightly?",["Life, liberty, and property → life, liberty, and pursuit of happiness","Separation of powers → checks and balances","Factions → pluralism","Reserved → concurrent powers"],0,"Locke wrote “life, liberty, and property”; the Declaration says “life, liberty, and the pursuit of happiness.”"],
+["Which was a weakness of the Articles of Confederation?",["A strong president","No power to tax directly","Too many federal courts","A two-house Congress"],1,"Congress could only request money from the states, and had no executive or national courts either."],
+["The Federal Farmer’s main objection to the Constitution was that it…",["Kept the Articles unchanged","Consolidated power and lacked a bill of rights","Gave states too much power","Had too many representatives"],1,"He accepted the Articles needed fixing but feared consolidation, too few representatives, and no bill of rights."],
+["Brutus 1 and Federalist 10 disagree most about…",["Whether to have a Bill of Rights","The size of a republic","Whether Congress can tax","The role of the Supreme Court"],1,"Brutus: only small republics work. Madison: a large republic dilutes factions."],
+["Madison’s solution to the problem of faction in Fed 10 is…",["A pure democracy","Ban all factions","A large representative republic","A single strong executive"],2,"Representatives refine opinion, and a bigger sphere has more interests, so a majority faction is harder to form."],
+["“Ambition must be made to counteract ambition” explains…",["Judicial review","Checks and balances among branches","The Commerce Clause","Ratification"],1,"Fed 51: give each branch the motive and means to resist the others."],
+["Clinton v. City of New York struck down the Line Item Veto Act because it…",["Violated the 10th Amendment","Let the President change laws outside the Art. I, Sec. 7 process","Gave Congress too much power","Taxed the states"],1,"The President may only sign or veto a bill as a whole; cancelling parts amends the law without bicameralism and presentment."],
+["Which case limited Congress’s Commerce Clause power?",["McCulloch v. Maryland","U.S. v. Lopez","Clinton v. City of New York","Marbury v. Madison"],1,"Lopez (1995): gun possession in a school zone is not economic activity."],
+["McCulloch v. Maryland relied mainly on which clause?",["Supremacy only","Necessary and Proper","Establishment","Full Faith and Credit"],1,"Congress could create a bank to carry out its taxing, borrowing and debt powers."],
+["Why can states legalize marijuana though federal law bans it?",["The Supremacy Clause doesn’t apply","States can’t be forced to enforce federal law, and federal enforcement priorities can vary","Marijuana is a reserved power only","The Cole Memo is a statute"],1,"Anti-commandeering plus changing federal enforcement (Cole vs. Sessions memos); federal law remains supreme."]
+];
+
+var MATRIX={
+ cols:["Locke","Declaration","Articles","Fed. Farmer","Brutus 1","Fed 10","Fed 51","Clinton"],
+ colors:["#7a5c2e","#b3261e","#6b4fa0","#2e7d5b","#c2570c","#1f5f8b","#0e7490","#8c1d40"],
+ rows:[
+  ["Natural rights &amp; consent",[1,1,0,0,0,0,0,0]],
+  ["Limited government",[1,1,1,1,1,0,1,1]],
+  ["Weak vs. strong national gov’t",[0,0,1,1,1,1,0,0]],
+  ["Bill of rights",[1,1,0,1,1,0,0,0]],
+  ["Size &amp; representation",[0,0,0,1,1,1,1,0]],
+  ["Dividing power",[0,0,1,1,1,0,1,1]],
+  ["Taxes &amp; money",[0,1,1,1,1,0,0,0]]
+ ]};
+
+/* ---------- tabs ---------- */
+function showTab(t){
+  document.querySelectorAll(".tab").forEach(function(b){b.classList.toggle("on",b.dataset.t===t)});
+  document.querySelectorAll(".panel").forEach(function(p){p.classList.toggle("on",p.id==="p-"+t)});
+  window.scrollTo({top:0});
+  try{history.replaceState(null,"","#"+t)}catch(e){}
+}
+document.getElementById("tabs").addEventListener("click",function(e){var b=e.target.closest(".tab");if(b)showTab(b.dataset.t)});
+document.getElementById("slideTabs").addEventListener("click",function(e){
+  var b=e.target.closest(".st");if(!b)return;
+  document.querySelectorAll("#slideTabs .st").forEach(function(x){x.classList.toggle("on",x===b)});
+  document.querySelectorAll(".sp").forEach(function(p){p.classList.toggle("on",p.id==="sp-"+b.dataset.s)});
+});
+
+/* ---------- documents ---------- */
+function renderDocPicker(){
+  var h="";DOCS.forEach(function(d,i){h+='<button class="dp'+(i===0?" on":"")+'" data-i="'+i+'" style="--c:'+d.c+'"><i></i>'+d.s+'</button>'});
+  document.getElementById("dpick").innerHTML=h;
+}
+function showDoc(i){
+  var d=DOCS[i];
+  document.querySelectorAll("#dpick .dp").forEach(function(b,j){b.classList.toggle("on",j===i)});
+  var ideas="";d.ideas.forEach(function(t,k){ideas+='<div class="idea"><div class="nn">'+(k+1)+'</div><div>'+t+'</div></div>'});
+  var links="";d.links.forEach(function(l){links+='<span class="chip">'+l+'</span>'});
+  var fix="";
+  if(d.fix){fix='<div style="grid-column:1/-1"><h4 style="margin:0 0 6px;color:var(--c)">Articles → Constitution</h4>';d.fix.forEach(function(p){fix+='<div class="fixrow"><div>'+p[0]+'</div><span>➜</span><div class="ok">'+p[1]+'</div></div>'});fix+='</div>'}
+  document.getElementById("docview").innerHTML=
+   '<div class="doc" style="--c:'+d.c+'"><div class="hd"><small>'+d.d+' · '+d.by+'</small><h3>'+d.n+'</h3></div><div class="bd">'+
+   '<div class="one">'+d.one+'</div>'+
+   '<div><h4 style="margin:0 0 4px;color:var(--c)">Key ideas</h4>'+ideas+'</div>'+
+   '<div><h4 style="margin:0 0 4px;color:var(--c)">Remember</h4><div class="quote">'+d.rem+'</div><h4 style="margin:14px 0 4px;color:var(--c)">Connects to</h4>'+links+'</div>'+fix+
+   '</div></div>';
+  var f=document.getElementById("fixbox");
+}
+document.getElementById("dpick").addEventListener("click",function(e){var b=e.target.closest(".dp");if(b)showDoc(+b.dataset.i)});
+renderDocPicker();showDoc(0);
+
+/* ---------- connections ---------- */
+(function(){
+  var h='<tr><th class="r"></th>';
+  MATRIX.cols.forEach(function(c,i){h+='<th style="background:'+MATRIX.colors[i]+'">'+c+'</th>'});
+  h+='</tr>';
+  MATRIX.rows.forEach(function(r){
+    h+='<tr><th class="r">'+r[0]+'</th>';
+    r[1].forEach(function(v,i){h+=v?'<td class="y" style="--c:'+MATRIX.colors[i]+'">●</td>':'<td></td>'});
+    h+='</tr>';
+  });
+  document.getElementById("matrix").innerHTML=h;
+  var a=DOCS[2],f="";
+  a.fix.forEach(function(p){f+='<div class="fixrow"><div>'+p[0]+'</div><span>➜</span><div class="ok">'+p[1]+'</div></div>'});
+  document.getElementById("fixbox").innerHTML=f;
+})();
+
+/* ---------- vocab ---------- */
+var vcat="All";
+function renderVocab(){
+  var q=document.getElementById("vq").value.toLowerCase().trim(),h="",n=0;
+  VOC.forEach(function(v){
+    if(vcat!=="All"&&v[2]!==vcat)return;
+    if(q&&(v[0]+" "+v[1]).toLowerCase().indexOf(q)<0)return;
+    n++;
+    h+='<div class="fc" style="--c:'+VCOL[v[2]]+'"><div><div class="face front"><b>'+v[0]+'</b><small>'+v[2]+'</small></div><div class="face back">'+v[1]+'</div></div></div>';
+  });
+  document.getElementById("vgrid").innerHTML=h||'<p class="sub">No matches.</p>';
+  document.getElementById("vcount").textContent=n+" terms";
+}
+(function(){
+  var cats=["All","Ideals","Documents","Structure","Federalism"],h="";
+  cats.forEach(function(c,i){h+='<button class="dp'+(i===0?" on":"")+'" data-c="'+c+'" style="--c:'+(VCOL[c]||"#1f3a5f")+'"><i></i>'+c+'</button>'});
+  document.getElementById("vcats").innerHTML=h;
+  document.getElementById("vcats").addEventListener("click",function(e){
+    var b=e.target.closest(".dp");if(!b)return;vcat=b.dataset.c;
+    document.querySelectorAll("#vcats .dp").forEach(function(x){x.classList.toggle("on",x===b)});renderVocab();
+  });
+  document.getElementById("vq").addEventListener("input",renderVocab);
+  document.getElementById("vgrid").addEventListener("click",function(e){var c=e.target.closest(".fc");if(c)c.classList.toggle("f")});
+  renderVocab();
+})();
+
+/* ---------- quiz ---------- */
+var qi=0,score=0,answered=false;
+function renderQ(){
+  var box=document.getElementById("qbox");
+  document.getElementById("qbar").style.width=(qi/QS.length*100)+"%";
+  if(qi>=QS.length){
+    var pct=Math.round(score/QS.length*100);
+    box.innerHTML='<h3 style="font-size:26px">'+score+' / '+QS.length+' <small style="color:var(--mute);font-size:15px">('+pct+'%)</small></h3><p>'+(pct>=80?"Strong. You’re ready for the connections questions.":pct>=50?"Getting there. Revisit the Documents and Connections tabs.":"Start with the Overview and Documents tabs, then retry.")+'</p><button class="btn" id="qre">Try again</button>';
+    document.getElementById("qre").onclick=function(){qi=0;score=0;renderQ()};return;
+  }
+  var q=QS[qi],h='<span class="tag">Question '+(qi+1)+' of '+QS.length+'</span><h3 style="font-size:20px;margin:6px 0 10px">'+q[0]+'</h3>';
+  q[1].forEach(function(o,i){h+='<button class="opt" data-i="'+i+'">'+o+'</button>'});
+  h+='<div id="qexp"></div>';
+  box.innerHTML=h;answered=false;
+}
+document.getElementById("qbox").addEventListener("click",function(e){
+  var b=e.target.closest(".opt");if(!b||answered)return;
+  answered=true;var q=QS[qi],i=+b.dataset.i;
+  document.querySelectorAll("#qbox .opt").forEach(function(o,j){if(j===q[2])o.classList.add("good");else if(j===i)o.classList.add("bad")});
+  if(i===q[2])score++;
+  document.getElementById("qexp").innerHTML='<div class="note" style="margin-top:12px"><b>'+(i===q[2]?"Correct. ":"Not quite. ")+'</b>'+q[3]+'</div><button class="btn" id="qnx">'+(qi===QS.length-1?"See score":"Next")+'</button>';
+  document.getElementById("qnx").onclick=function(){qi++;renderQ()};
+});
+renderQ();
+
+/* ---------- argument FRQ ---------- */
+var DK={LK:["Locke","#7a5c2e"],DOI:["Declaration","#b3261e"],AOC:["Articles","#6b4fa0"],FF:["Fed. Farmer","#2e7d5b"],BR:["Brutus 1","#c2570c"],F10:["Fed 10","#1f5f8b"],F51:["Fed 51","#0e7490"],CON:["Constitution","#1f3a5f"],MCC:["McCulloch","#8c1d40"],LOP:["Lopez","#8c1d40"],CLN:["Clinton v. NYC","#8c1d40"],DOLE:["S. Dakota v. Dole","#8c1d40"],NFIB:["NFIB v. Sebelius","#8c1d40"],NYUS:["NY v. U.S.","#8c1d40"],DECK:["Your slides","#667085"],F70:["Fed 70 (extra)","#667085"]};
+var LIK={High:"#b3261e",Medium:"#c2570c",Lower:"#667085"};
+var TOP=[
+{s:"Grants",lik:"High",q:"Should federal aid to states come mainly as categorical grants (strings attached) or block grants (state flexibility)?",
+ a:{t:"Categorical grants: strings make sure national goals are met",pts:[["AOC","A national government that could only request money couldn’t make states act. Congress needs real fiscal power."],["CON","Art. I, Sec. 8 gives taxing and spending power; the Supremacy Clause makes federal law supreme."],["F10","A larger sphere guards minorities from state-level majority factions, so national conditions can protect equal treatment."],["DOLE","Conditions on money are allowed if clear and related to the program’s purpose."],["DECK","Block grants are harder to measure, so officials are harder to hold accountable."]]},
+ b:{t:"Block grants: states know local needs best",pts:[["BR","Federal taxing power would swallow the states, and distant government can’t know local conditions."],["FF","Warned against consolidating power in one national government."],["CON","10th Amendment reserves unlisted powers (education, welfare) to states."],["NFIB","Courts limit coercive conditions on states."],["F51","Double security: strong states are a second check on national power."]]},
+ pair:"A: Articles + Art. I §8 (or Dole). B: Brutus 1 + 10th Amendment.",
+ rebut:"Categorical: concede states know local needs, then say conditions are voluntary (states can decline) and accountability matters more. Block: concede the accountability problem, then argue state voters and legislatures can hold officials responsible and Congress can still set broad goals."},
+{s:"Federal vs. state power",lik:"High",q:"Should the national government have broad power under the Commerce and Necessary & Proper Clauses?",
+ a:{t:"Yes: a strong national government is necessary",pts:[["AOC","A weak center couldn’t tax, regulate commerce, or enforce its laws."],["CON","Art. I §8 grants broad powers; Necessary & Proper lets Congress carry them out; Art. VI Supremacy."],["MCC","Broad reading of Necessary & Proper lets Congress create a national bank."],["F10","The national government can handle problems and factions that individual states can’t."]]},
+ b:{t:"No: national power must stay limited",pts:[["BR","Necessary & Proper and Supremacy are open-ended and will expand national power."],["FF","Feared consolidation into one national government."],["CON","10th Amendment: powers not delegated stay with states or people."],["LOP","Congress exceeded Commerce power by regulating non-economic gun possession."]]},
+ pair:"A: McCulloch + Art. I §8. B: Brutus 1 + Lopez.",
+ rebut:"National side: concede Brutus’s fear, then point to Lopez as proof the courts still limit Congress. State side: concede the Articles were too weak, then argue the Constitution already fixed that with enumerated powers."},
+{s:"Large vs. small republic",lik:"High",q:"Does a large republic protect liberty better than a small one?",
+ a:{t:"Large: more interests make tyranny of the majority harder",pts:[["F10","A larger sphere has more parties and interests, so a single majority faction struggles to form; representatives refine opinion."],["F51","So many interests and classes that a majority combination is unlikely; justice is the end of government."],["CON","Art. I builds a large representative republic; Art. IV guarantees a republican form."]]},
+ b:{t:"Small: shared interests and accountability protect liberty",pts:[["BR","Only small territories share interests and let people know and check their representatives; large republics drift toward despotism."],["FF","Too few representatives; ordinary “middling” people lose out to elites."],["DECK","Elitist theory: a small minority ends up holding the most power."]]},
+ pair:"A: Fed 10 + a modern interest-group example. B: Brutus 1 + the elitist-theory slide.",
+ rebut:"Large: admit closeness has value, then argue closeness also makes local majorities more dangerous to minorities. Small: admit factions are a problem, then argue distance and size make representatives less accountable, not safer."},
+{s:"Interest groups",lik:"Medium",q:"Do interest groups (factions) strengthen or weaken democracy?",
+ a:{t:"Strengthen: competing groups check one another",pts:[["F10","You can’t remove factions without destroying liberty; many competing factions limit each other."],["F51","A society with many interests protects minority rights."],["CON","1st Amendment protects assembly and petition."],["DECK","Pluralism: competition among groups shapes policy."]]},
+ b:{t:"Weaken: money and narrow interests distort policy",pts:[["F10","Factions are adverse to others’ rights and the community’s good, causing instability and injustice."],["BR","Distant representatives get captured by the wealthy and well-connected."],["DECK","Elitist theory; PACs and Super PACs aren’t even in the Constitution."]]},
+ pair:"A: Fed 10 (control effects) + 1st Amendment. B: Fed 10 (the dangers) + elitist theory.",
+ rebut:"Note you can use Fed 10 on <b>either</b> side, so be precise about which part you cite. Pro: concede some groups dominate, then argue regulation, not elimination, is Madison’s answer. Con: concede liberty requires allowing groups, then argue disclosure and limits control their effects."},
+{s:"Bill of Rights",lik:"Medium",q:"Is a written bill of rights necessary to protect liberty?",
+ a:{t:"Yes: rights must be written down",pts:[["BR","Brutus complained that the Constitution had no bill of rights."],["FF","Wanted amendments protecting jury trial, press and conscience before ratification."],["DOI","Government exists to secure unalienable rights, so they should be stated."],["LK","Natural rights are the purpose of the social contract."],["DECK","Jefferson: no government should refuse a bill of rights or rest it on inference."]]},
+ b:{t:"No: structure is the main protection",pts:[["F51","Pit branches against each other so ambition counteracts ambition; structure, not promises, restrains government."],["F10","A large republic controls majority tyranny."],["CON","The original text already protects some rights (e.g., habeas corpus in Art. I)."]]},
+ pair:"A: Brutus 1 + Jefferson’s letter. B: Fed 51 + Fed 10.",
+ rebut:"Yes: concede structure matters, then argue majorities and officials can still violate rights unless written limits exist. No: concede the Bill of Rights is valuable, then argue it works only because separated branches and courts enforce it."},
+{s:"Delegating to the President",lik:"Medium",q:"Should Congress be able to give the President lawmaking power (for example, a line-item veto)?",
+ a:{t:"No: lawmaking belongs to Congress",pts:[["F51","Each branch needs a will of its own; Congress must not hand off or lose its power."],["CON","Art. I §1 and §7: Congress legislates; the President only signs or vetoes a bill as a whole."],["CLN","The Court struck down the Line Item Veto Act (6–3)."],["DOI","Grievances show the danger of one ruler making and enforcing rules."]]},
+ b:{t:"Yes: delegation is practical and traditional",pts:[["CON","Art. II: the President ensures laws are faithfully executed."],["CLN","Dissenters (Scalia, O’Connor, Breyer) saw it as ordinary executive discretion over spending."],["AOC","No executive under the Articles meant nothing got done."],["F70","Fed 70 (extra): energy in the executive."]]},
+ pair:"A: Fed 51 + Clinton v. NYC. B: Art. II + the Clinton dissents.",
+ rebut:"No: concede modern government needs executive discretion, then argue that a statute can’t rewrite the Constitution’s lawmaking steps. Yes: concede the majority’s Art. I §7 reading, then argue narrower delegations are different from rewriting laws."},
+{s:"Executive orders",lik:"Medium",q:"Should presidential power to issue executive orders be limited?",
+ a:{t:"Yes: limit executive orders",pts:[["DOI","The Declaration lists abuses by one ruler as proof of tyranny."],["F51","Branches must be able to resist each other’s encroachment."],["CON","Art. I vests legislative power in Congress, not the President."],["CLN","The Court policed the boundary between making and enforcing law."]]},
+ b:{t:"No: the President needs room to act",pts:[["CON","Art. II: Take Care Clause and Commander-in-Chief power."],["AOC","A government with no strong executive was ineffective."],["F70","Fed 70 (extra): a single energetic executive."]]},
+ pair:"A: Fed 51 + Art. I. B: Art. II + Articles.",
+ rebut:"Limit: concede emergencies need fast action, then argue Congress and courts can still check orders. No limit: concede abuse risk, then argue existing checks (courts, Congress, elections) already work."},
+{s:"Marijuana policy",lik:"Medium",q:"Who should control marijuana policy: states or the federal government?",
+ a:{t:"States: a reserved power",pts:[["CON","10th Amendment and state police powers (health, welfare)."],["NYUS","Congress can’t force states to enforce federal programs (anti-commandeering)."],["BR","Local government is closer to the people (Anti-Federalist view)."],["F51","Double security: states are a second check on national power."],["DECK","The 2013 Cole Memo left enforcement to states."]]},
+ b:{t:"Federal government: uniform national law",pts:[["CON","Supremacy Clause and Commerce Clause give federal law the final say."],["AOC","A patchwork of conflicting state rules with no national authority was the Articles’ problem."],["DECK","The 2018 Sessions Memo shows federal law remains enforceable."]]},
+ pair:"A: 10th Amendment + Cole Memo. B: Supremacy Clause + Sessions Memo.",
+ rebut:"States: concede federal law is supreme, then argue the federal government can’t force state enforcement and has limited resources. Federal: concede states are closer, then argue conflicting state laws create uncertainty over interstate commerce."},
+{s:"Direct vs. representative",lik:"Medium",q:"Should citizens decide policy directly instead of through elected representatives?",
+ a:{t:"Direct: the people should decide",pts:[["DOI","Government’s just powers come from the consent of the governed."],["LK","Consent is the source of legitimate government."],["BR","Closeness between people and government protects liberty."],["DECK","Participatory democracy: citizens decide directly."]]},
+ b:{t:"Representative: representatives govern better",pts:[["F10","Pure democracy can’t control faction; representatives refine and enlarge public views."],["F51","Structure and division, not raw majority will, protect rights."],["CON","Art. IV guarantees a republican form of government."]]},
+ pair:"A: Declaration + Brutus 1. B: Fed 10 + Guarantee Clause.",
+ rebut:"Direct: concede majority passions are risky, then argue direct input is needed for legitimacy. Representative: concede consent matters, then argue elected representatives are how consent is expressed without mob rule."},
+{s:"Amending the Constitution",lik:"Lower",q:"Should it be easier to amend the Constitution?",
+ a:{t:"Yes: easier",pts:[["DOI","People may alter or abolish government when it fails to secure their rights."],["LK","Consent can be withdrawn."],["AOC","Unanimous amendment made reform impossible, a warning against rigid rules."]]},
+ b:{t:"No: keep it hard",pts:[["F10","Easy change lets majority factions rewrite rules against minorities."],["F51","Structure is meant to restrain passing majorities."],["CON","Art. V requires 2/3 to propose and 3/4 to ratify, a broad consensus."],["DECK","The 27th Amendment took over 200 years: stability is the design."]]},
+ pair:"A: Declaration + Articles. B: Fed 10 + Art. V.",
+ rebut:"Easier: concede stability matters, then point out Art. V already improved on the Articles, and the people can still revise. Hard: concede people can change government, then argue the Constitution provides that path, just a deliberate one."},
+{s:"Electoral College",lik:"Lower",q:"Should the Electoral College be kept?",
+ a:{t:"Keep it",pts:[["F10","Filtering and a large federal system protect against passing majority factions."],["CON","Art. II and the 12th Amendment set the state-based system."],["F51","Double security: states’ role is part of the design."]]},
+ b:{t:"Abolish it",pts:[["DOI","Consent of the governed and popular sovereignty."],["DECK","Four presidents lost the popular vote but won: 1876, 1888, 2000, 2016."],["LK","Equal individuals consent equally."]]},
+ pair:"A: Fed 10 + Art. II. B: Declaration + the popular-vote slide.",
+ rebut:"Keep: concede popular-vote losers are troubling, then argue federalism and minority protection justify it. Abolish: concede the framers designed it, then argue the principle of consent now requires one person, one vote."}
+];
+function lk(k){var d=DK[k];return '<span class="lk" style="background:'+d[1]+'">'+d[0]+'</span>'}
+function sideHTML(sd,col,lab){
+  var h='<div class="card" style="padding-top:0"><div class="sidehd" style="background:'+col+'">'+lab+': '+sd.t+'</div>';
+  sd.pts.forEach(function(p){h+='<div class="pt">'+lk(p[0])+'<span>'+p[1]+'</span></div>'});
+  return h+'</div>';
+}
+function showTopic(i){
+  var t=TOP[i];
+  document.querySelectorAll("#tpick .dp").forEach(function(b,j){b.classList.toggle("on",j===i)});
+  document.getElementById("tview").innerHTML=
+   '<div class="frqtop"><span class="badge" style="background:'+LIK[t.lik]+'">'+t.lik+' likelihood</span><span class="sub" style="margin:0">(my estimate)</span></div>'+
+   '<div class="card top"><span class="tag">Prompt-style question</span><p class="big" style="margin:4px 0 0">'+t.q+'</p></div>'+
+   '<div class="grid w2" style="margin-top:14px">'+sideHTML(t.a,"#1f5f8b","Side A")+sideHTML(t.b,"#c2570c","Side B")+'</div>'+
+   '<div class="grid" style="margin-top:14px"><div class="card col c-green"><h3>⭐ Strongest evidence pairs</h3>'+t.pair+'</div><div class="card col c-purple"><h3>🛡️ Answering the other side</h3>'+t.rebut+'</div></div>';
+}
+(function(){
+  var h="";TOP.forEach(function(t,i){h+='<button class="dp'+(i===0?" on":"")+'" data-i="'+i+'" style="--c:'+LIK[t.lik]+'"><i></i>'+t.s+'</button>'});
+  document.getElementById("tpick").innerHTML=h;
+  document.getElementById("tpick").addEventListener("click",function(e){var b=e.target.closest(".dp");if(b)showTopic(+b.dataset.i)});
+  showTopic(0);
+})();
+
+/* open tab from hash */
+(function(){var h=location.hash.replace("#","");if(h&&document.getElementById("p-"+h))showTab(h)})();
+</script>
+</body>
+</html>
